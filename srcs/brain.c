@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2017
 ** brain.c
 ** File description:
-** blabla
+** Arthur
 */
 
 #include "my.h"
 
-int main(int argc, char *argv[])
+int main(int ac, char *av[])
 {
 	return(0);
 }

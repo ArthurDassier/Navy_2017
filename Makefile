@@ -6,11 +6,10 @@
 ##
 
 SRC	=	srcs/brain.c		\
-		srcs/?.c		\
 
 OBJ	=	$(SRC:.c = .o)
 
-NAME	=	?
+NAME	=	navy
 
 LIB_DIR	=	./lib
 
