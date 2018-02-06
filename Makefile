@@ -5,7 +5,11 @@
 ## Makefile
 ##
 
-SRC	=	srcs/brain.c		\
+SRC	=	srcs/brain.c \
+		srcs/map.c \
+		srcs/ships_position.c \
+		srcs/get_next_line.c \
+		srcs/recup_ships_pos.c \
 
 OBJ	=	$(SRC:.c = .o)
 
@@ -17,7 +21,7 @@ MY.H_DIR	=	./include
 
 CC	=	gcc
 
-C_FLAGS	=	-Wall -Wextra
+C_FLAGS	=	-g3 -Wall -Wextra
 
 LIB_FLAG	=	-L$(LIB_DIR) -lmy
 
