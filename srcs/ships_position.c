@@ -14,36 +14,43 @@ char **remp_with_nb(char **map, int hori, int verti, char *ship)
 
 	while (map[i][j] != ship[2])
 		++j;
-	while (i != ship[3])
-		++i;
-	while (hori != 0 && verti != 0) {
-		map[i + verti][j + hori] = ship[0];
+	i = (ship[3] - 48) + 2;
+	printf("i = %d\nj = %d\n", i, j);
+	while (hori != 0) {
+		map[i][j + hori] = ship[0];
 		if (hori > 0)
 			--hori;
+		else if (hori < 0)
+			++hori;
+	}
+	while (verti != 0) {
+		map[i + verti][j] = ship[0];
 		if (verti > 0)
 			--verti;
+		else if (verti < 0)
+			++verti;
 	}
 	return (map);
 }
 
 int ship_hori(char *ship, int size)
 {
-	if (ship[2] == ship[5]) {
+	if (ship[2] != ship[5]) {
 		if ((ship[3] - 48) > (ship[6] - 48))
-			return (size);
-		else
 			return (size * -1);
+		else
+			return (size);
 	}
 	return (0);
 }
 
 int ship_verti(char *ship, int size)
 {
-	if (ship[2] != ship[5]) {
+	if (ship[2] == ship[5]) {
 		if (ship[2] > ship[5])
-			return (size);
-		else
 			return (size * -1);
+		else
+			return (size);
 	}
 	return (0);
 }

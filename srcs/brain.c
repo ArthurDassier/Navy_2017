@@ -20,7 +20,7 @@ int main(int ac, char **av)
 	i = 0;
 	empty_map(enemys_map);
 	ships_map(my_map, ships);
-	printf("my position:\n");
+	printf("\nmy position:\n");
 	while (my_map[i] != NULL)
 		printf("%s\n", my_map[i++]);
 	i = 0;
