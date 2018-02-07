@@ -14,17 +14,17 @@ char **remp_with_nb(char **map, int hori, int verti, char *ship)
 
 	while (map[i][j] != ship[2])
 		++j;
-	i = (ship[3] - 48) + 2;
-	printf("i = %d\nj = %d\n", i, j);
+	i = (ship[3] - 48) + 1;
 	while (hori != 0) {
-		map[i][j + hori] = ship[0];
+		j -= 1;;
+		map[i][j + hori + 2] = ship[0];
 		if (hori > 0)
 			--hori;
 		else if (hori < 0)
 			++hori;
 	}
 	while (verti != 0) {
-		map[i + verti][j] = ship[0];
+		map[(i - 1) + verti][j] = ship[0];
 		if (verti > 0)
 			--verti;
 		else if (verti < 0)

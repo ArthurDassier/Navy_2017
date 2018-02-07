@@ -18,7 +18,6 @@ char **ships_map(char **my_map, char **ships)
 	while (ships[nb] != NULL) {
 		horizo = ship_hori(ships[nb], (ships[nb][0] - 48));
 		vertica = ship_verti(ships[nb], (ships[nb][0] - 48));
-		printf("== horizo ==> %d\n== vertica ==> %d\n", horizo, vertica);
 		remp_with_nb(my_map, horizo, vertica, ships[nb]);
 		++nb;
 	}
