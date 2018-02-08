@@ -5,8 +5,9 @@
 ** mes_prototypes
 */
 
-#ifndef MYLIB_H
-#define MYLIB_H
+#ifndef MYLIB_H_
+#define MYLIB_H_
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>

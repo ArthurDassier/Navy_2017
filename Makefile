@@ -5,11 +5,12 @@
 ## Makefile
 ##
 
-SRC	=	srcs/brain.c \
-		srcs/map.c \
-		srcs/ships_position.c \
-		srcs/get_next_line.c \
-		srcs/recup_ships_pos.c \
+SRC	=	srcs/brain.c		\
+		srcs/map.c		\
+		srcs/ships_position.c	\
+		srcs/get_next_line.c	\
+		srcs/recup_ships_pos.c	\
+		srcs/connections.c	\
 
 OBJ	=	$(SRC:.c = .o)
 

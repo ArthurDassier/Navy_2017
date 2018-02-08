@@ -5,8 +5,8 @@
 ** prots
 */
 
-#ifndef PRINTF_H
-#define PRINT_H
+#ifndef PRINTF_H_
+#define PRINTF_H_
 
 #include "my.h"
 
