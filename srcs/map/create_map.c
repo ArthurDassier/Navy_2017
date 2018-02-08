@@ -27,7 +27,7 @@ void play(int ac, char **av)
 	my_printf("\nenemy's position:\n");
 	while (enemys_map[i] != NULL)
 		my_printf("%s\n", enemys_map[i++]);
-	free(my_map); 
+	free(my_map);
 	free(enemys_map);
 }
 
