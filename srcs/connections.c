@@ -7,9 +7,12 @@
 
 #include "navy.h"
 
+static int global = 0;
+
 void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 {
 	my_printf("ennemy connected\n");
+	global = 1;
 }
 
 void wait_connection(int ac, char *av[])
@@ -19,11 +22,8 @@ void wait_connection(int ac, char *av[])
 	my_printf("my_pid:\t%d\n", getpid());
 	my_printf("waiting for enemy connection...\n");
 	act.sa_sigaction = &catch_sigint;
-	while (1) {
-		if (sigaction(SIGUSR1, &act, NULL))
-			break;
-	}
-	return;
+	sigaction(SIGUSR1, &act, NULL);
+	while (global == 0);
 }
 
 int server(int ac, char *av[])
