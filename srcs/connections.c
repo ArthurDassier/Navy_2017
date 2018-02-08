@@ -15,7 +15,7 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 	global = 1;
 }
 
-void wait_connection(int ac, char *av[])
+void wait_connection()
 {
 	struct sigaction act;
 
@@ -29,7 +29,7 @@ void wait_connection(int ac, char *av[])
 int server(int ac, char *av[])
 {
 	if (ac == 2)
-		wait_connection(ac, av);
+		wait_connection();
 	if (ac == 3) {
 		kill(my_getnbr(av[1]), SIGUSR1);
 		my_printf("my_pid:\t%d\n", getpid());
@@ -37,4 +37,5 @@ int server(int ac, char *av[])
 		av[1] = av[2];
 	}
 	play(ac, av);
+	return (0);
 }
