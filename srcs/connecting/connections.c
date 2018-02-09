@@ -27,7 +27,7 @@ int keep_pid(int usr, int pid)
 
 void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 {
-	my_printf("ennemy connected\n");
+	my_printf("\nennemy connected\n");
 	global = 1;
 }
 
