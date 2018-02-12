@@ -38,8 +38,11 @@ char **ships_infos(char *av, char **ships)
 	int	fd = open(av, O_RDONLY);
 	int	i = 0;
 
-	while (i != 4)
-		ships[i++] = get_next_line(fd);
+	while (i != 4) {
+		ships[i] = malloc(sizeof(char) * 7);
+		read(fd, ships[i], 8);
+		ships[i++][7] = '\0';
+	}
 	return (ships);
 }
 

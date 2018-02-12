@@ -17,11 +17,9 @@ maps *init_maps(maps *navy_maps, int ac, char **av)
 	navy_maps->enemy_p1 = malloc(sizeof(char *) * 11);
 	navy_maps->enemy_p2 = malloc(sizeof(char *) * 11);
 
-	ships_infos(av[ac - 1], ships_p1);
-	ships_infos(av[ac - 2], ships_p2);
+	ships_infos(av[ac - 2], ships_p1);
+	ships_infos(av[ac - 1], ships_p2);
 
-	my_show_tab(ships_p1);
-	my_show_tab(ships_p2);
 	ships_map(navy_maps->p1, ships_p1);
 	ships_map(navy_maps->p2, ships_p2);
 

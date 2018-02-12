@@ -9,10 +9,11 @@
 #define NAVY_H_
 
 #include <signal.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include "my.h"
 #include "printf.h"
-#include "get_next_line.h"
 
 typedef struct maps
 {
