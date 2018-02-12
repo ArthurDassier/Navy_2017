@@ -29,6 +29,7 @@ int ship_verti(char *ship, int size);
 char **remp_with_nb(char **map, int hori, int verti, char *ship);
 char **ships_infos(char *av, char **ships);
 int server(int ac, char *av[]);
+char **remp_lines_for_hori(char **map, int hori, char *ship, int j);
 maps *init_maps(maps *navy_maps, int ac, char **av);
 
 #endif
