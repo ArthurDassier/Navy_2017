@@ -9,22 +9,12 @@
 
 maps *init_maps(maps *navy_maps, int ac, char **av)
 {
-	char	**ships_p1 = malloc(sizeof(char *) * 4);
-	char	**ships_p2 = malloc(sizeof(char *) * 4);
+	char	**ships = malloc(sizeof(char *) * 4);
 
-	navy_maps->p1 = malloc(sizeof(char *) * 11);
-	navy_maps->p2 = malloc(sizeof(char *) * 11);
-	navy_maps->enemy_p1 = malloc(sizeof(char *) * 11);
-	navy_maps->enemy_p2 = malloc(sizeof(char *) * 11);
-
-	ships_infos(av[ac - 2], ships_p1);
-	ships_infos(av[ac - 1], ships_p2);
-
-	ships_map(navy_maps->p1, ships_p1);
-	ships_map(navy_maps->p2, ships_p2);
-
-	empty_map(navy_maps->enemy_p1);
-	empty_map(navy_maps->enemy_p2);
-
+	navy_maps->player = malloc(sizeof(char *) * 11);
+	navy_maps->enemy = malloc(sizeof(char *) * 11);
+	ships_infos(av[ac - 1], ships);
+	ships_map(navy_maps->player, ships);
+	empty_map(navy_maps->enemy);
 	return (navy_maps);
 }

@@ -17,10 +17,8 @@
 
 typedef struct maps
 {
-	char	**p1;
-	char	**p2;
-	char	**enemy_p1;
-	char	**enemy_p2;
+	char	**player;
+	char	**enemy;
 } maps;
 
 char **empty_map(char **enemys_map);
