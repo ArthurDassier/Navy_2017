@@ -43,7 +43,7 @@ void wait_connection()
 	while (global == 0);
 }
 
-int server(int ac, char *av[])
+int server(int ac, char **av)
 {
 	if (ac == 2)
 		wait_connection();
