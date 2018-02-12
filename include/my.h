@@ -31,5 +31,6 @@ char *my_realloc(char *str);
 void my_puterror(char *str);
 int cti(char c);
 char itc(int nb);
+void my_show_tab(char **str);
 
 #endif

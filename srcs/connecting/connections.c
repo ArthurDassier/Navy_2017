@@ -55,6 +55,5 @@ int server(int ac, char **av)
 		my_printf("successfully connected\n");
 		av[1] = av[2];
 	}
-	play(ac, av);
 	return (0);
 }

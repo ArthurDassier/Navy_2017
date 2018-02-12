@@ -18,3 +18,13 @@ void my_putstr(char const *str)
 		i = i + 1;
 	}
 }
+
+void my_show_tab(char **str)
+{
+	int	i = 0;
+
+	while (str[i] != NULL) {
+		my_putstr(str[i++]);
+		my_putchar('\n');
+	}
+}

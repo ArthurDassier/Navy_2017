@@ -11,6 +11,7 @@ SRC	=	srcs/brain.c			\
 		srcs/map/create_map.c		\
 		srcs/map/ships_position.c	\
 		srcs/map/gnl_part_two.c		\
+		srcs/map/init_maps.c		\
 
 OBJ	=	$(SRC:.c = .o)
 
