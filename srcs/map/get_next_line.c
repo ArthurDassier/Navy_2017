@@ -35,16 +35,13 @@ char *my_memset(char *str, char remp, int nb)
 char *realloc_str(char *buff)
 {
 	static int	i = 2;
-	int		j = 0;
-	char		*tmp = NULL;
+	int		j = -1;
+	char		*tmp = malloc(sizeof(char) * (READ_SIZE * i) + 1);
 
-	tmp = malloc(sizeof(char) * (READ_SIZE * i) + 1);
 	if (tmp == NULL)
 		return (NULL);
-	while (buff[j] != '\0') {
+	while (buff[++j] != '\0')
 		tmp[j] = buff[j];
-		++j;
-	}
 	tmp[j] = '\0';
 	j = 0;
 	buff = malloc(sizeof(char) * (READ_SIZE * i) + 1);
@@ -84,30 +81,24 @@ char *eject_buff(char *buff)
 char *get_next_line(int fd)
 {
 	static char	*buff = NULL;
-	int		rv = 0;
-	char		*tmp = malloc(sizeof(char) * READ_SIZE + 1);
-	int		i = 0;
-	int		j = 0;
+	var		gnl = init_var();
 
 	if (fd < 0)
 		return (NULL);
 	buff = init_str(buff, fd);
-	while ((rv = read(fd, tmp, READ_SIZE)) != 0) {
-		if (rv < 0)
+	while ((gnl.rv = read(fd, gnl.tmp, READ_SIZE)) != 0) {
+		if (gnl.rv < 0)
 			return (NULL);
-		while (j < rv) {
-			if (j == (READ_SIZE - 1)) {
-				buff[i] = tmp[j];
-				buff = realloc_str(buff);
-			}
-			buff[i++] = tmp[j++];
+		while (gnl.j < gnl.rv) {
+			buff_cpy(buff, gnl.tmp, gnl.j, gnl.i);
+			buff[gnl.i++] = gnl.tmp[gnl.j++];
 		}
-		if (fd == 0 && tmp[rv-1] == '\n') {
-			buff[i-1] = '\0';
+		if (fd == 0 && gnl.tmp[gnl.rv-1] == '\n') {
+			buff[gnl.i-1] = '\0';
 			return (buff);
 		}
-		j = 0;
-		my_memset(tmp, '\0', READ_SIZE);
+		gnl.j = 0;
+		my_memset(gnl.tmp, '\0', READ_SIZE);
 	}
 	return (eject_buff(buff));
 }
