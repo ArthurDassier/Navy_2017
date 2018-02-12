@@ -9,9 +9,9 @@
 
 void play(int ac, char **av)
 {
-	char	**enemys_map = malloc(sizeof(char*) * 11);
-	char	**my_map = malloc(sizeof(char*) * 11);
-	char	**ships = malloc(sizeof(char*) * 4);
+	char	**enemys_map = malloc(sizeof(char *) * 11);
+	char	**my_map = malloc(sizeof(char *) * 11);
+	char	**ships = malloc(sizeof(char *) * 4);
 	int	i = 0;
 
 	ships_infos(ac, av, ships);

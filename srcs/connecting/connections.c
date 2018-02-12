@@ -45,8 +45,9 @@ void wait_connection()
 
 int server(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac == 2) {
 		wait_connection();
+	}
 	if (ac == 3) {
 		kill(my_getnbr(av[1]), SIGUSR1);
 		my_printf("my_pid:\t%d\n", getpid());
