@@ -9,7 +9,7 @@
 
 static int global = 0;
 
-int keep_pid(int usr, int pid)
+int keep_pid(int usr, size_t pid)
 {
 	static int pid_usr1 = 0;
 	static int pid_usr2 = 0;
@@ -20,14 +20,20 @@ int keep_pid(int usr, int pid)
 		pid_usr2 = pid;
 	else if (usr == 3)
 		return (pid_usr1);
-	else
+	else if (usr == 4)
 		return (pid_usr2);
 	return (-1);
 }
 
 void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 {
+	(void) sig;
+	(void) context;
 	my_printf("\nennemy connected\n");
+	keep_pid(2, siginfo->si_pid);
+	printf("%d\n", siginfo->si_pid);
+	printf("%d\n", keep_pid(4,0));
+	printf("%d\n", getpid());
 	global = 1;
 }
 
@@ -43,17 +49,17 @@ void wait_connection()
 	while (global == 0);
 }
 
-int server(int ac, char **av)
+int server(int ac, char **av, maps *navy_maps)
 {
 	if (ac == 2) {
 		wait_connection();
+		attack();
 	}
 	if (ac == 3) {
 		kill(my_getnbr(av[1]), SIGUSR1);
 		my_printf("my_pid:\t%d\n", getpid());
-		keep_pid(2, getpid());
 		my_printf("successfully connected\n");
-		av[1] = av[2];
+		game();
 	}
 	return (0);
 }

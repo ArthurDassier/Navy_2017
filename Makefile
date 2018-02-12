@@ -10,6 +10,10 @@ SRC	=	srcs/brain.c			\
 		srcs/map/create_map.c		\
 		srcs/map/ships_position.c	\
 		srcs/map/init_maps.c		\
+		srcs/game/turns.c		\
+		srcs/sig/recup_sig.c		\
+		srcs/get_next_line.c		\
+		srcs/gnl_part_two.c		\
 
 OBJ	=	$(SRC:.c = .o)
 

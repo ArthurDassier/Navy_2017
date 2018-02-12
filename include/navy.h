@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include "my.h"
 #include "printf.h"
+#include "get_next_line.h"
 
 typedef struct maps
 {
@@ -28,7 +29,16 @@ int ship_hori(char *ship, int size);
 int ship_verti(char *ship, int size);
 char **remp_with_nb(char **map, int hori, int verti, char *ship);
 char **ships_infos(char *av, char **ships);
-int server(int ac, char *av[]);
+int server(int ac, char **av, maps *navy_maps);
+int game();
+int col_line(int code);
+int save_col(int col, int code);
+void incr_usr1();
+void incr_usr2();
+int count_sig2(int code);
+void recup_sig();
 maps *init_maps(maps *navy_maps, int ac, char **av);
+int keep_pid(int usr, size_t pid);
+void attack();
 
 #endif

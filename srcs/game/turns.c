@@ -9,36 +9,39 @@
 
 int mti(char maj)
 {
-	return (maj - 16);
+	return (maj - 16 - 48);
 }
 
 
-void attack(char **my_map, char **enemys_map)
+void attack()
 {
 	char	*attack = get_next_line(0);
 	int	col = mti(attack[0]);
 	int	line = cti(attack[1]);
 
-	for (int sg1; sg1 != col; ++sg1)
+	for (int sg1 = 0; sg1 != col; ++sg1)
 	{
-		kill(keep_pid(3, 0), SIGUSR1);
+		kill(keep_pid(4, 0), SIGUSR1);
+		sleep(1);
 	}
-	kill(keep_pid(3, 0), SIGUSR2);
-	for (int sg1; sg1 != col; ++sg1)
+	kill(keep_pid(4, 0), SIGUSR2);
+	for (int sg1 = 0; sg1 != line; ++sg1)
 	{
-		kill(keep_pid(3, 0), SIGUSR1);
+		kill(keep_pid(4, 0), SIGUSR1);
+		sleep(1);
 	}
-	kill(keep_pid(3, 0), SIGUSR2);
+	kill(keep_pid(4, 0), SIGUSR2);
 }
 
-int game(char **my_map, char **enemys_map)
+int game()
 {
-	int col = 0;
-	int line = 0;
+	static int oui = 0;
+
 	recup_sig();
-	//col = my_getnbr(save_col(0,2));
-	//line = my_getnbr(col_line(1) - 1);
+	printf("%d\n", save_col(0,2));
+	printf("%d\n", col_line(1) - 1);
+	oui = 1;
+	return (0);
 	//save_col(0, 3);
 	//col_line(2);
-	return (col);
 }
