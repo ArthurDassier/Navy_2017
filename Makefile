@@ -7,6 +7,8 @@
 
 SRC	=	srcs/brain.c			\
 		srcs/connecting/connections.c	\
+		srcs/game/is_win.c		\
+		srcs/game/replace_maps.c	\
 		srcs/map/create_map.c		\
 		srcs/map/ships_position.c	\
 		srcs/map/init_maps.c		\

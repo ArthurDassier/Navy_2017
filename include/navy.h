@@ -22,6 +22,12 @@ typedef struct maps
 	char	**enemy;
 } maps;
 
+typedef struct structe
+{
+	int	line;
+	int	col;
+} structe;
+
 char **empty_map(char **enemys_map);
 char **ships_map(char **my_map, char **ships);
 char **malloc_map(char **map);
@@ -29,8 +35,11 @@ int ship_hori(char *ship, int size);
 int ship_verti(char *ship, int size);
 char **remp_with_nb(char **map, int hori, int verti, char *ship);
 char **ships_infos(char *av, char **ships);
-int server(int ac, char **av, maps *navy_maps);
-int game();
+int server(int ac, char *av[]);
+char **remp_lines_for_hori(char **map, int hori, char *ship, int j);
+maps *init_maps(maps *navy_maps, int ac, char **av);
+maps *replace_maps(maps *navy_maps, structe var);
+int is_win(char **maps);
 int col_line(int code);
 int save_col(int col, int code);
 void incr_usr1();
