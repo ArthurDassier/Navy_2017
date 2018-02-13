@@ -14,12 +14,12 @@ int is_win(char **maps)
 
 	while (maps[i] != NULL) {
 		if (maps[i][j] == '\0') {
-			i = 0;
-			++j;
+			j = 0;
+			++i;
 		}
-		if (maps[i][j] <= 48 && maps[i][j] <= 57)
+		if (maps[i][j] >= 48 && maps[i][j] <= 57)
 			return (1);
-		++i;
+		++j;
 	}
 	return (0);
 }
