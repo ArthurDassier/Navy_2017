@@ -35,7 +35,7 @@ int ship_hori(char *ship, int size);
 int ship_verti(char *ship, int size);
 char **remp_with_nb(char **map, int hori, int verti, char *ship);
 char **ships_infos(char *av, char **ships);
-int server(int ac, char *av[], maps *navy_maps);
+int server(int ac, char **av, maps *navy_maps);
 char **remp_lines_for_hori(char **map, int hori, char *ship, int j);
 maps *init_maps(maps *navy_maps, int ac, char **av);
 maps *replace_maps(maps *navy_maps, structe var);
@@ -47,7 +47,8 @@ void incr_usr2(int sig, siginfo_t *siginfo, void *context);
 int count_sig2(int code);
 void recup_sig(void);
 maps *init_maps(maps *navy_maps, int ac, char **av);
-int keep_pid(int usr, size_t pid);
-void attack(void);
+pid_t keep_pid(int usr, pid_t pid);
+void attack();
+int game();
 
 #endif

@@ -79,6 +79,9 @@ void recup_sig(void)
 	action_usr2.sa_sigaction = &incr_usr2;
 	sigaction(SIGUSR1, &action_usr1, NULL);
 	sigaction(SIGUSR2, &action_usr2, NULL);
-	while (count_sig2(2) != 2);
+	while (count_sig2(2) != 2) {
+		printf("OK\n");
+		sleep(2);
+	}
 	count_sig2(3);
 }
