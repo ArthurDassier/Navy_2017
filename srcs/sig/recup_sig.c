@@ -33,15 +33,21 @@ int save_col(int col, int code)
 	return (0);
 }
 
-void incr_usr1()
+void incr_usr1(int sig, siginfo_t *siginfo, void *context)
 {
+	(void) sig;
+	(void) siginfo;
+	(void) context;
 	col_line(1);
 }
 
-void incr_usr2()
+void incr_usr2(int sig, siginfo_t *siginfo, void *context)
 {
 	static int	check = 0;
 
+	(void) sig;
+	(void) siginfo;
+	(void) context;
 	if (check == 0) {
 		save_col(col_line(1) - 1, 1);
 		++check;
@@ -55,13 +61,13 @@ int count_sig2(int code)
 {
 	static int	count = 0;
 
-	if (code == 1) {
+	if (code == 1)
 		++count;
 	if (code == 2)
 		return (count);
-	} else
+	else
 		count = 0;
-	return (0);
+	return (count);
 }
 
 void recup_sig()

@@ -15,24 +15,31 @@ char **remp_with_nb(char **map, int hori, int verti, char *ship)
 	while (map[i][j] != ship[2])
 		++j;
 	i = (ship[3] - 48) + 1;
-	while (hori != 0) {
-		j -= 1;;
-		map[i][j + hori + 2] = ship[0];
-		if (hori > 0)
-			--hori;
-		else if (hori < 0)
-			++hori;
-	}
+	if (hori != 0)
+		remp_lines_for_hori(map, hori, ship, j);
 	while (verti != 0) {
-		map[(i - 1) + verti][j] = ship[0];
-		if (verti > 0)
-			--verti;
-		else if (verti < 0)
-			++verti;
+		map[i - 1 + verti][j] = ship[0];
+		--verti;
 	}
 	return (map);
 }
 
+char **remp_lines_for_hori(char **map, int hori, char *ship, int j)
+{
+	int	i = 0;
+
+	i = ship[3] - 48 + 1;
+	map[i][j] = ship[0];
+	map[i][j - 2 + (hori * 2)] = ship[0];
+	while (hori != 0) {
+		if (hori % 2 != 0)
+			map[i][j + 1 + hori] = ship[0];
+		else
+			map[i][j + 2 + hori] = ship[0];
+		--hori;
+	}
+	return (map);
+}
 char **ships_infos(char *av, char **ships)
 {
 	int	fd = open(av, O_RDONLY);
@@ -48,22 +55,14 @@ char **ships_infos(char *av, char **ships)
 
 int ship_hori(char *ship, int size)
 {
-	if (ship[2] != ship[5]) {
-		if ((ship[3] - 48) > (ship[6] - 48))
-			return (size * -1);
-		else
-			return (size);
-	}
+	if (ship[2] != ship[5])
+		return (size);
 	return (0);
 }
 
 int ship_verti(char *ship, int size)
 {
-	if (ship[2] == ship[5]) {
-		if (ship[2] > ship[5])
-			return (size * -1);
-		else
-			return (size);
-	}
+	if (ship[2] == ship[5])
+		return (size);
 	return (0);
 }
