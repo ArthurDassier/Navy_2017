@@ -70,7 +70,7 @@ int count_sig2(int code)
 	return (count);
 }
 
-void recup_sig()
+void recup_sig(void)
 {
 	struct sigaction	action_usr1;
 	struct sigaction	action_usr2;
