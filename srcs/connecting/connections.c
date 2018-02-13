@@ -31,9 +31,9 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 	(void) context;
 	my_printf("\nennemy connected\n");
 	keep_pid(2, siginfo->si_pid);
-	printf("%d\n", siginfo->si_pid);
-	printf("%d\n", keep_pid(4,0));
-	printf("%d\n", getpid());
+	printf("== siginfo->si_pid ==> %d\n", siginfo->si_pid);
+	printf("== keep_pid == >%d\n", keep_pid(4,0));
+	printf("== getpid ==> %d\n", getpid());
 	global = 1;
 }
 
