@@ -12,7 +12,6 @@ int mti(char maj)
 	return (maj - 15 - 48);
 }
 
-
 void attack()
 {
 	char	*attack = get_next_line(0);
