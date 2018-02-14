@@ -9,6 +9,10 @@
 
 maps *replace_maps(maps *navy_maps, line_col *var)
 {
+	var->col += 1;
+	var->line *= 2;
+	printf("== col ==> %d\n", var->col);
+	printf("== lin ==> %d\n", var->line);
 	if (navy_maps->player[var->col][var->line] >= 48 &&
 			navy_maps->player[var->col][var->line] <= 57) {
 		navy_maps->player[var->col][var->line] = 'x';
