@@ -47,7 +47,7 @@ int game(maps *navy_maps)
 	oui = 1;
 	save_col(0, 3);
 	col_line(2);
-	replace_maps(navy_maps, var);
+	replace_maps(navy_maps, &var);
 	return (0);
 }
 
@@ -57,12 +57,12 @@ int play(int ac, char **av, maps *navy_maps)
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
 			attack();
-			game(navy_maps);
+		//	game(navy_maps);
 		}
 		if (ac == 3) {
 			displays_for_p2(navy_maps);
 			game(navy_maps);
-			attack();
+		//	attack();
 		}
 	}
 }

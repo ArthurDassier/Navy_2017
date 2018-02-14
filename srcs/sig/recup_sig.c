@@ -40,7 +40,8 @@ void incr_usr1(int sig, siginfo_t *siginfo, void *context)
 	(void) context;
 	if (sig == SIGUSR1) {
 		col_line(1);
-	} else if (sig == SIGUSR2) {
+	}
+	if (sig == SIGUSR2) {
 		incr_usr2(sig, siginfo, context);
 	}
 
@@ -81,7 +82,6 @@ void recup_sig(void)
 {
 	struct sigaction	*action_usr1 = malloc(sizeof(struct sigaction));
 
-	action_usr1->sa_flags = 0;
 	action_usr1->sa_flags = SA_SIGINFO;
 	action_usr1->sa_sigaction = &incr_usr1;
 	sigaction(SIGUSR1, action_usr1, NULL);

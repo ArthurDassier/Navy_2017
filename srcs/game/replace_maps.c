@@ -7,15 +7,15 @@
 
 #include "navy.h"
 
-maps *replace_maps(maps *navy_maps, line_col var)
+maps *replace_maps(maps *navy_maps, line_col *var)
 {
-	if (navy_maps->player[var.col][var.line] >= 48 &&
-			navy_maps->player[var.col][var.line] <= 57) {
-		navy_maps->player[var.col][var.line] = 'x';
-		navy_maps->enemy[var.col][var.line] = 'x';
+	if (navy_maps->player[var->col][var->line] >= 48 &&
+			navy_maps->player[var->col][var->line] <= 57) {
+		navy_maps->player[var->col][var->line] = 'x';
+		navy_maps->enemy[var->col][var->line] = 'x';
 	} else {
-		navy_maps->player[var.col][var.line] = 'o';
-		navy_maps->enemy[var.col][var.line] = 'o';
+		navy_maps->player[var->col][var->line] = 'o';
+		navy_maps->enemy[var->col][var->line] = 'o';
 	}
 	return (navy_maps);
 }
