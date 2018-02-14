@@ -16,8 +16,8 @@ int mti(char maj)
 void attack()
 {
 	char	*attack;
-	int	col;
-	int	line;
+	int	col = 0;
+	int	line = 0;
 
 	attack = get_next_line(0);
 	col = mti(attack[0]);
