@@ -46,10 +46,11 @@ char **ships_infos(char *av, char **ships)
 	int	i = 0;
 
 	while (i != 4) {
-		ships[i] = malloc(sizeof(char) * 7);
+		ships[i] = malloc(sizeof(char) * 8);
 		read(fd, ships[i], 8);
 		ships[i++][7] = '\0';
 	}
+	ships[i] = '\0';
 	return (ships);
 }
 

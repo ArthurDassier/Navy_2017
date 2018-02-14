@@ -9,7 +9,7 @@
 
 maps *init_maps(maps *navy_maps, int ac, char **av)
 {
-	char	**ships = malloc(sizeof(char *) * 4);
+	char	**ships = malloc(sizeof(char *) * 5);
 
 	navy_maps->player = malloc(sizeof(char *) * 11);
 	navy_maps->enemy = malloc(sizeof(char *) * 11);
