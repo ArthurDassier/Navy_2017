@@ -89,6 +89,6 @@ void recup_sig(void)
 	while (count_sig2(2) != 2) {
 		sleep(1);
 	}
-	//count_sig2(3);
+	count_sig2(3);
 	free(action_usr1);
 }
