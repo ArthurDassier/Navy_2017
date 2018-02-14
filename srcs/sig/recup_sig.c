@@ -41,8 +41,7 @@ void incr_usr1(int sig, siginfo_t *siginfo, void *context)
 	if (sig == SIGUSR1) {
 		printf("1\n");
 		col_line(1);
-	}
-	else if (sig == SIGUSR2) {
+	} else if (sig == SIGUSR2) {
 		printf("2\n");
 		incr_usr2(sig, siginfo, context);
 	}
@@ -56,27 +55,27 @@ void incr_usr2(int sig, siginfo_t *siginfo, void *context)
 	(void) sig;
 	(void) siginfo;
 	(void) context;
+	count_sig2(1);
 	if (check == 0) {
 		save_col(col_line(1) - 1, 1);
 		++check;
-	} else
+		col_line(2);
+	} else {
 		check = 0;
-	col_line(2);
-	count_sig2(1);
+		return;
+	}
 }
 
 int count_sig2(int code)
 {
 	static int	count = 0;
-	if (code == 1) {
-		printf("OUI\n" );
+
+	if (code == 1)
 		++count;
-	}
-	if (code == 2) {
+	if (code == 2)
 		return (count);
-	} else
+	if (code == 3)
 		count = 0;
-	printf(">>> %d\n", count);
 	return (count);
 }
 
