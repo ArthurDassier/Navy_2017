@@ -39,7 +39,7 @@ int game()
 
 	recup_sig();
 	printf("%d\n", save_col(0,2));
-	printf("%d\n", col_line(1) - 1);
+	printf("%d\n", col_line(1) - 2);
 	printf("OYI\n");
 	oui = 1;
 	return (0);
