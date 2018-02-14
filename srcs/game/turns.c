@@ -57,12 +57,13 @@ int play(int ac, char **av, maps *navy_maps)
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
 			attack();
-		//	game(navy_maps);
+			game(navy_maps);
 		}
 		if (ac == 3) {
 			displays_for_p2(navy_maps);
 			game(navy_maps);
-		//	attack();
+			my_putstr("\nattack: ");
+			attack();
 		}
 	}
 }
