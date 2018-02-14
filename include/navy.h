@@ -22,11 +22,11 @@ typedef struct maps
 	char	**enemy;
 } maps;
 
-typedef struct structe
+typedef struct line_col
 {
 	int	line;
 	int	col;
-} structe;
+} line_col;
 
 char **empty_map(char **enemys_map);
 char **ships_map(char **my_map, char **ships);
@@ -38,7 +38,7 @@ char **ships_infos(char *av, char **ships);
 int server(int ac, char **av, maps *navy_maps);
 char **remp_lines_for_hori(char **map, int hori, char *ship, int j);
 maps *init_maps(maps *navy_maps, int ac, char **av);
-maps *replace_maps(maps *navy_maps, structe var);
+maps *replace_maps(maps *navy_maps, line_col var);
 int is_win(char **maps);
 int col_line(int code);
 int save_col(int col, int code);
@@ -49,6 +49,9 @@ void recup_sig(void);
 maps *init_maps(maps *navy_maps, int ac, char **av);
 pid_t keep_pid(int usr, pid_t pid);
 void attack();
-int game();
+int game(maps *navy_maps);
+int play(int ac, char **av, maps *navy_maps);
+void displays_for_p1(maps *navy_maps);
+void displays_for_p2(maps *navy_maps);
 
 #endif

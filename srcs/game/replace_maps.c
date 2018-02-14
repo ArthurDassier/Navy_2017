@@ -7,7 +7,7 @@
 
 #include "navy.h"
 
-maps *replace_maps(maps *navy_maps, structe var)
+maps *replace_maps(maps *navy_maps, line_col var)
 {
 	if (navy_maps->player[var.col][var.line] >= 48 &&
 			navy_maps->player[var.col][var.line] <= 57) {

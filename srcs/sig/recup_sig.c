@@ -39,10 +39,8 @@ void incr_usr1(int sig, siginfo_t *siginfo, void *context)
 	(void) siginfo;
 	(void) context;
 	if (sig == SIGUSR1) {
-		printf("1\n");
 		col_line(1);
 	} else if (sig == SIGUSR2) {
-		printf("2\n");
 		incr_usr2(sig, siginfo, context);
 	}
 

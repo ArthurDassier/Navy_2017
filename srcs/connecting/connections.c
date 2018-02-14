@@ -52,13 +52,12 @@ int server(int ac, char **av, maps *navy_maps)
 {
 	if (ac == 2) {
 		wait_connection();
-		attack();
 	}
 	if (ac == 3) {
 		kill(my_getnbr(av[1]), SIGUSR1);
 		my_printf("my_pid:\t%d\n", getpid());
 		my_printf("successfully connected\n");
-		game();
 	}
+	play(ac, av, navy_maps);
 	return (0);
 }
