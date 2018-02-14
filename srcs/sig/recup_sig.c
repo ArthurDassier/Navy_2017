@@ -38,7 +38,15 @@ void incr_usr1(int sig, siginfo_t *siginfo, void *context)
 	(void) sig;
 	(void) siginfo;
 	(void) context;
-	col_line(1);
+	if (sig == SIGUSR1) {
+		printf("1\n");
+		col_line(1);
+	}
+	else if (sig == SIGUSR2) {
+		printf("2\n");
+		incr_usr2(sig, siginfo, context);
+	}
+
 }
 
 void incr_usr2(int sig, siginfo_t *siginfo, void *context)
@@ -60,28 +68,29 @@ void incr_usr2(int sig, siginfo_t *siginfo, void *context)
 int count_sig2(int code)
 {
 	static int	count = 0;
-
-	if (code == 1)
+	if (code == 1) {
+		printf("OUI\n" );
 		++count;
-	if (code == 2)
+	}
+	if (code == 2) {
 		return (count);
-	else
+	} else
 		count = 0;
+	printf(">>> %d\n", count);
 	return (count);
 }
 
 void recup_sig(void)
 {
-	struct sigaction	action_usr1;
-	struct sigaction	action_usr2;
+	struct sigaction	*action_usr1 = malloc(sizeof(struct sigaction));
 
-	action_usr1.sa_sigaction = &incr_usr1;
-	action_usr2.sa_sigaction = &incr_usr2;
-	sigaction(SIGUSR1, &action_usr1, NULL);
-	sigaction(SIGUSR2, &action_usr2, NULL);
+	action_usr1->sa_flags = SA_SIGINFO;
+	action_usr1->sa_sigaction = &incr_usr1;
+	sigaction(SIGUSR1, action_usr1, NULL);
+	sigaction(SIGUSR2, action_usr1, NULL);
 	while (count_sig2(2) != 2) {
-		printf("OK\n");
-		sleep(2);
+		sleep(1);
 	}
-	count_sig2(3);
+	//count_sig2(3);
+	free(action_usr1);
 }

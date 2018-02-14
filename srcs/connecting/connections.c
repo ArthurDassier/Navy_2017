@@ -36,15 +36,16 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 
 void wait_connection()
 {
-	struct sigaction act;
+	struct sigaction	*act = malloc(sizeof(struct sigaction));
 
-	act.sa_flags = SA_RESTART | SA_SIGINFO;
+	act->sa_flags = SA_SIGINFO;
 	my_printf("my_pid:\t%d\n", getpid());
 	keep_pid(1, getpid());
 	my_printf("waiting for enemy connection...\n");
-	act.sa_sigaction = &catch_sigint;
-	sigaction(SIGUSR1, &act, NULL);
+	act->sa_sigaction = &catch_sigint;
+	sigaction(SIGUSR1, act, NULL);
 	while (global == 0);
+	free(act);
 }
 
 int server(int ac, char **av, maps *navy_maps)

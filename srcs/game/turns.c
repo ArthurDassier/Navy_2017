@@ -9,7 +9,7 @@
 
 int mti(char maj)
 {
-	return (maj - 16 - 48);
+	return (maj - 15 - 48);
 }
 
 
@@ -21,14 +21,14 @@ void attack()
 
 	for (int sg1 = 0; sg1 != col; ++sg1)
 	{
-		kill(keep_pid(4, 0), SIGUSR1);
 		sleep(1);
+		kill(keep_pid(4, 0), SIGUSR1);
 	}
 	kill(keep_pid(4, 0), SIGUSR2);
 	for (int sg1 = 0; sg1 != line; ++sg1)
 	{
-		kill(keep_pid(4, 0), SIGUSR1);
 		sleep(1);
+		kill(keep_pid(4, 0), SIGUSR1);
 	}
 	kill(keep_pid(4, 0), SIGUSR2);
 }
