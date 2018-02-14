@@ -15,6 +15,7 @@ SRC	=	srcs/brain.c			\
 		srcs/print/print_maps.c		\
 		srcs/game/turns.c		\
 		srcs/sig/recup_sig.c		\
+		srcs/sig/count_sig.c		\
 		srcs/get_next_line.c		\
 		srcs/gnl_part_two.c		\
 
