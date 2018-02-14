@@ -35,6 +35,7 @@ typedef struct local_attack
 	int	turn;
 } local_attack;
 
+char itm(int maj);
 char **empty_map(char **enemys_map);
 char **ships_map(char **my_map, char **ships);
 char **malloc_map(char **map);

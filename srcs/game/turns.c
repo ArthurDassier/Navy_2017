@@ -12,6 +12,10 @@ int mti(char maj)
 	return (maj - 15 - 48);
 }
 
+char itm(int maj)
+{
+	return (maj + 16 + 48);
+}
 
 void attack(local_attack *local)
 {
