@@ -60,7 +60,9 @@ int play(int ac, maps *navy_maps)
 {
 	line_col	var;
 
-	while (is_win(navy_maps->player) == 1) {
+	while (1) {
+		if (is_win(navy_maps->player) == 0)
+			return (1);
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
 			attack(navy_maps);
@@ -73,6 +75,5 @@ int play(int ac, maps *navy_maps)
 			attack(navy_maps);
 		}
 	}
-	my_putstr("I won\n");
 	return (0);
 }
