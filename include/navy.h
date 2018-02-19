@@ -26,10 +26,12 @@ typedef struct line_col
 {
 	int	line;
 	int	col;
+	int	touch;
 } line_col;
 
 int checker(int code);
 char itm(int maj);
+int mti(char maj);
 char **empty_map(char **enemys_map);
 char **ships_map(char **my_map, char **ships);
 char **malloc_map(char **map);
@@ -50,11 +52,13 @@ int count_sig2(int code);
 void recup_sig(void);
 maps *init_maps(maps *navy_maps, int ac, char **av);
 pid_t keep_pid(int usr, pid_t pid);
-void attack(void);
+void attack(maps *navy_maps);
 int game(maps *navy_maps, line_col *var);
 int play(int ac, maps *navy_maps);
 void displays_for_p1(maps *navy_maps);
 void displays_for_p2(maps *navy_maps);
 void hit_or_miss(void);
+int h_m(int code);
+maps *replace_enemy_map(maps *navy_maps, int col, int line);
 
 #endif

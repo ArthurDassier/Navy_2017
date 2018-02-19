@@ -7,11 +7,14 @@
 
 #include "navy.h"
 
-maps *replace_enemy_map(maps *navy_maps, line_col *var)
+maps *replace_enemy_map(maps *navy_maps, int col, int line)
 {
-	if (var->touch == 1)
-		navy_maps->enemy[var->col][var->line] = 'x';
+	line += 1;
+	col *= 2;
+	col -= 2;
+	if (h_m(0) == 1)
+		navy_maps->enemy[line][col] = 'x';
 	else
-		navy_maps->enemy[var->col][var->line] = 'o';
+		navy_maps->enemy[line][col] = 'o';
 	return (navy_maps);
 }

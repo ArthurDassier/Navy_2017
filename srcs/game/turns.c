@@ -17,7 +17,7 @@ char itm(int maj)
 	return (maj + 16 + 48);
 }
 
-void attack()
+void attack(maps *navy_maps)
 {
 	char	*attack;
 	int	col = 0;
@@ -40,6 +40,8 @@ void attack()
 	kill(keep_pid(4, 0), SIGUSR2);
 	my_printf("%s: ", attack);
 	hit_or_miss();
+	replace_enemy_map(navy_maps, col, line);
+	h_m(3);
 }
 
 int game(maps *navy_maps, line_col *var)
@@ -61,14 +63,14 @@ int play(int ac, maps *navy_maps)
 	while (1) {
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
-			attack();
+			attack(navy_maps);
 			game(navy_maps, &var);
 		}
 		if (ac == 3) {
 			displays_for_p2(navy_maps);
 			game(navy_maps, &var);
 			my_putstr("\nattack: ");
-			attack();
+			attack(navy_maps);
 		}
 	}
 }

@@ -9,7 +9,17 @@
 
 int h_m(int code)
 {
-	return (code);
+	static int check = 0;
+
+	if (code == 0)
+		return (check);
+	if (code == 1)
+		check = 1;
+	if (code == 2)
+		check = 2;
+	if (code == 3)
+		check = 0;
+	return (check);
 }
 
 int checker(int code)
@@ -33,10 +43,12 @@ void displayer(int sig, siginfo_t *siginfo, void *context)
 	if (sig == SIGUSR1) {
 		my_printf("hit\n");
 		checker(1);
+		h_m(1);
 	}
 	if (sig == SIGUSR2) {
 		my_printf("missed\n");
 		checker(1);
+		h_m(2);
 	}
 }
 
