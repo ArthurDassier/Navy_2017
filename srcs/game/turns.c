@@ -40,11 +40,11 @@ void attack(local_attack *local)
 		kill(keep_pid(4, 0), SIGUSR1);
 	}
 	kill(keep_pid(4, 0), SIGUSR2);
+	hit_or_miss(attack);
 }
 
 int game(maps *navy_maps, line_col *var, local_attack *local)
 {
-
 	recup_sig();
 	var->line = save_col(0,2);
 	var->col = col_line(1) - 2;

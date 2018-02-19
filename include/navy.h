@@ -35,6 +35,7 @@ typedef struct local_attack
 	int	turn;
 } local_attack;
 
+int checker(int code);
 char itm(int maj);
 char **empty_map(char **enemys_map);
 char **ships_map(char **my_map, char **ships);
@@ -61,5 +62,6 @@ int game(maps *navy_maps, line_col *var, local_attack *local);
 int play(int ac, maps *navy_maps);
 void displays_for_p1(maps *navy_maps);
 void displays_for_p2(maps *navy_maps);
+void hit_or_miss(char *attack);
 
 #endif

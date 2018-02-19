@@ -24,5 +24,4 @@ void displays_for_p1(maps *navy_maps)
 void displays_for_p2(maps *navy_maps)
 {
 	display_maps(navy_maps);
-	my_putstr("\nwaiting for enemy's attack...\n");
 }
