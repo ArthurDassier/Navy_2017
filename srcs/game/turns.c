@@ -50,7 +50,7 @@ int game(maps *navy_maps, line_col *var, local_attack *local)
 	var->col = col_line(1) - 2;
 	save_col(0, 3);
 	col_line(2);
-	replace_maps(navy_maps, var, local);
+	replace_maps(navy_maps, var);
 	return (0);
 }
 
@@ -75,7 +75,7 @@ int play(int ac, maps *navy_maps)
 			game(navy_maps, &var, &local);
 			my_putstr("\nattack: ");
 			attack(&local);
-			replace_maps(navy_maps, &var, &local);
+			replace_maps(navy_maps, &var);
 		}
 	}
 }

@@ -58,15 +58,8 @@ void hit_or_miss(char *attack)
 
 maps *replace_maps(maps *navy_maps, line_col *var)
 {
-	if (local->turn == 0) {
-		++local->turn;
-		return (navy_maps);
-	}
 	var->col += 1;
 	var->line *= 2;
-	local->l_col += 1;
-	local->l_line -= 1;
-	local->l_line *= 2;
 	if (navy_maps->player[var->col][var->line] >= 48 &&
 			navy_maps->player[var->col][var->line] <= 57) {
 		navy_maps->player[var->col][var->line] = 'x';

@@ -47,7 +47,7 @@ char **ships_infos(char *av, char **ships);
 int server(int ac, char **av, maps *navy_maps);
 char **remp_lines_for_hori(char **map, int hori, char *ship, int j);
 maps *init_maps(maps *navy_maps, int ac, char **av);
-maps *replace_maps(maps *navy_maps, line_col *var, local_attack *local);
+maps *replace_maps(maps *navy_maps, line_col *var);
 int is_win(char **maps);
 int col_line(int code);
 int save_col(int col, int code);
