@@ -17,7 +17,7 @@ char itm(int maj)
 	return (maj + 16 + 48);
 }
 
-void attack(local_attack *local)
+void attack()
 {
 	char	*attack;
 	int	col = 0;
@@ -26,8 +26,6 @@ void attack(local_attack *local)
 	attack = get_next_line(0);
 	col = mti(attack[0]);
 	line = cti(attack[1]);
-	local->l_col = line;
-	local->l_line = col;
 	for (int sg1 = 0; sg1 != col; ++sg1)
 	{
 		usleep(50000);
@@ -41,10 +39,10 @@ void attack(local_attack *local)
 	}
 	kill(keep_pid(4, 0), SIGUSR2);
 	my_printf("%s: ", attack);
-	hit_or_miss(attack);
+	hit_or_miss();
 }
 
-int game(maps *navy_maps, line_col *var, local_attack *local)
+int game(maps *navy_maps, line_col *var)
 {
 	my_putstr("\nwaiting for enemy's attack...\n");
 	recup_sig();
@@ -58,26 +56,19 @@ int game(maps *navy_maps, line_col *var, local_attack *local)
 
 int play(int ac, maps *navy_maps)
 {
-	local_attack	local;
 	line_col	var;
 
-	local.turn = 0;
-	local.l_line = 0;
-	local.l_col = 0;
 	while (1) {
-		local.turn = 0;
 		if (ac == 2) {
-			++local.turn;
 			displays_for_p1(navy_maps);
-			attack(&local);
-			game(navy_maps, &var, &local);
+			attack();
+			game(navy_maps, &var);
 		}
 		if (ac == 3) {
 			displays_for_p2(navy_maps);
-			game(navy_maps, &var, &local);
+			game(navy_maps, &var);
 			my_putstr("\nattack: ");
-			attack(&local);
-//			replace_maps(navy_maps, &var);
+			attack();
 		}
 	}
 }

@@ -57,11 +57,11 @@ int count_sig2(int code);
 void recup_sig(void);
 maps *init_maps(maps *navy_maps, int ac, char **av);
 pid_t keep_pid(int usr, pid_t pid);
-void attack(local_attack *local);
-int game(maps *navy_maps, line_col *var, local_attack *local);
+void attack(void);
+int game(maps *navy_maps, line_col *var);
 int play(int ac, maps *navy_maps);
 void displays_for_p1(maps *navy_maps);
 void displays_for_p2(maps *navy_maps);
-void hit_or_miss(char *attack);
+void hit_or_miss(void);
 
 #endif

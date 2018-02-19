@@ -40,7 +40,7 @@ void displayer(int sig, siginfo_t *siginfo, void *context)
 	}
 }
 
-void hit_or_miss(char *attack)
+void hit_or_miss()
 {
 	struct sigaction	*hitormiss = malloc(sizeof(struct sigaction));
 
