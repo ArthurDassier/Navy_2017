@@ -16,6 +16,5 @@ int main(int ac, char **av)
 		return (84);
 	}
 	init_maps(navy_maps, ac, av);
-	server(ac, av, navy_maps);
-	return (0);
+	return (server(ac, av, navy_maps));
 }

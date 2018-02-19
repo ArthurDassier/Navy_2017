@@ -59,6 +59,5 @@ int server(int ac, char **av, maps *navy_maps)
 		my_printf("my_pid:\t%d\n", getpid());
 		my_printf("successfully connected\n");
 	}
-	play(ac, navy_maps);
-	return (0);
+	return (play(ac, navy_maps));
 }
