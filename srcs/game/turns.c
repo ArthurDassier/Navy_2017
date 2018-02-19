@@ -75,7 +75,7 @@ int play(int ac, maps *navy_maps)
 			game(navy_maps, &var, &local);
 			my_putstr("\nattack: ");
 			attack(&local);
-			replace_maps(navy_maps, &var);
+//			replace_maps(navy_maps, &var);
 		}
 	}
 }
