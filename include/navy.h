@@ -28,13 +28,6 @@ typedef struct line_col
 	int	col;
 } line_col;
 
-typedef struct local_attack
-{
-	int	l_line;
-	int	l_col;
-	int	turn;
-} local_attack;
-
 int checker(int code);
 char itm(int maj);
 char **empty_map(char **enemys_map);
