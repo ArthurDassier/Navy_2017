@@ -7,14 +7,32 @@
 
 #include "navy.h"
 
-int mti(char maj)
+int check_wn_status(maps *navy_maps)
 {
-	return (maj - 15 - 48);
+	struct sigaction	*win = malloc(sizeof(struct sigaction));
+
+	win->sa_flags = SA_SIGINFO;
+	win->sa_sigaction = &loose;
+	sigaction(SIGUSR1, win, NULL);
+	sigaction(SIGUSR2, win, NULL);
+	while (is_loose(3) == 0);
+	if (is_loose(3) == 1) {
+		my_putstr("I win\n");
+		free(win);
+		return (1);
+	}
+	is_loose(4);
+	free(win);
+	return (0);
 }
 
-char itm(int maj)
+int check_ls_status(maps *navy_maps)
 {
-	return (maj + 16 + 48);
+	if (is_win(navy_maps->player) == 0) {
+		my_putstr("Enemy won\n");
+		return (1);
+	}
+	return (0);
 }
 
 void attack(maps *navy_maps)
@@ -58,24 +76,29 @@ int game(maps *navy_maps, line_col *var)
 
 int play(int ac, maps *navy_maps)
 {
-	struct sigaction	*win = malloc(sizeof(struct sigaction));
-	line_col		var;
+	line_col	var;
+	int		salut = 0;
 
-	win->sa_flags = SA_SIGINFO;
-	win->sa_sigaction = &loose;
-	while (is_win(navy_maps->player) == 1) {
-		sigaction(SIGUSR2, win, NULL);
+	while (1) {
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
 			attack(navy_maps);
+			if ((salut = check_wn_status(navy_maps)) > 0)
+				return (salut);
 			game(navy_maps, &var);
+			if ((salut = check_ls_status(navy_maps)) > 0)
+				return (salut);
 		}
 		if (ac == 3) {
 			displays_for_p2(navy_maps);
 			game(navy_maps, &var);
+			if ((salut = check_ls_status(navy_maps)) > 0)
+				return (salut);
 			my_putstr("\nattack: ");
 			attack(navy_maps);
+			if ((salut = check_wn_status(navy_maps)) > 0)
+				return (salut);
 		}
 	}
-	return (0);
+	return (1);
 }
