@@ -9,7 +9,7 @@
 
 int h_m(int code)
 {
-
+	return (code);
 }
 
 int checker(int code)
@@ -58,14 +58,17 @@ void hit_or_miss()
 maps *replace_maps(maps *navy_maps, line_col *var)
 {
 	usleep(50000);
+	my_printf("%c%d: ", itm(var->line), var->col);
 	var->col += 1;
 	var->line *= 2;
 	if (navy_maps->player[var->col][var->line] >= 48 &&
 			navy_maps->player[var->col][var->line] <= 57) {
 		navy_maps->player[var->col][var->line] = 'x';
+		my_putstr("hit\n");
 		kill(keep_pid(4, 0), SIGUSR1);
 	} else {
 		navy_maps->player[var->col][var->line] = 'o';
+		my_putstr("missed\n");
 		kill(keep_pid(4, 0), SIGUSR2);
 	}
 	return (navy_maps);
