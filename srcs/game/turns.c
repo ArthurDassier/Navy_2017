@@ -58,11 +58,13 @@ int game(maps *navy_maps, line_col *var)
 
 int play(int ac, maps *navy_maps)
 {
-	line_col	var;
+	struct sigaction	*win = malloc(sizeof(struct sigaction));
+	line_col		var;
 
-	while (1) {
-		if (is_win(navy_maps->player) == 0)
-			return (1);
+	win->sa_flags = SA_SIGINFO;
+	win->sa_sigaction = &loose;
+	while (is_win(navy_maps->player) == 1) {
+		sigaction(SIGUSR2, win, NULL);
 		if (ac == 2) {
 			displays_for_p1(navy_maps);
 			attack(navy_maps);

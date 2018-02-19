@@ -7,6 +7,8 @@
 
 #include "navy.h"
 
+int loose()
+
 int is_win(char **maps)
 {
 	int	i = 2;
