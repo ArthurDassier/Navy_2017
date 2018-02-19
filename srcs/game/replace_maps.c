@@ -9,7 +9,7 @@
 
 int h_m(int code)
 {
-
+	return (code);
 }
 
 int checker(int code)
