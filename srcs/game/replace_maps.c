@@ -48,7 +48,6 @@ void hit_or_miss(char *attack)
 	hitormiss->sa_sigaction = &displayer;
 	sigaction(SIGUSR1, hitormiss, NULL);
 	sigaction(SIGUSR2, hitormiss, NULL);
-	my_printf("%s: ", attack);
 	while (checker(0) == 0) {
 		usleep(50000);
 	}
@@ -58,6 +57,7 @@ void hit_or_miss(char *attack)
 
 maps *replace_maps(maps *navy_maps, line_col *var)
 {
+	usleep(50000);
 	var->col += 1;
 	var->line *= 2;
 	if (navy_maps->player[var->col][var->line] >= 48 &&
