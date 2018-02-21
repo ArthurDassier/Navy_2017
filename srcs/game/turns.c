@@ -15,7 +15,9 @@ int check_wn_status(maps *navy_maps)
 	win->sa_sigaction = &loose;
 	sigaction(SIGUSR1, win, NULL);
 	sigaction(SIGUSR2, win, NULL);
-	while (is_loose(3) == 0);
+	while (is_loose(3) == 0) {
+		usleep(50000);
+	}
 	if (is_loose(3) == 1) {
 		my_putstr("I win\n");
 		free(win);
