@@ -19,7 +19,8 @@ int check_wn_status(maps *navy_maps)
 		usleep(50000);
 	}
 	if (is_loose(3) == 1) {
-		my_putstr("I win\n");
+		display_maps(navy_maps);
+		my_putstr("\nI win\n");
 		free(win);
 		return (1);
 	}
@@ -31,7 +32,8 @@ int check_wn_status(maps *navy_maps)
 int check_ls_status(maps *navy_maps)
 {
 	if (is_win(navy_maps->player) == 0) {
-		my_putstr("Enemy won\n");
+		display_maps(navy_maps);
+		my_putstr("\nEnemy won\n");
 		return (1);
 	}
 	return (0);
