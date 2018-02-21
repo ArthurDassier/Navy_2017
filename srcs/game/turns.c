@@ -86,7 +86,7 @@ int play(int ac, maps *navy_maps)
 			displays_for_p1(navy_maps);
 			attack(navy_maps);
 			if ((salut = check_wn_status(navy_maps)) > 0)
-				return (salut);
+				return (salut - 1);
 			game(navy_maps, &var);
 			if ((salut = check_ls_status(navy_maps)) > 0)
 				return (salut);
@@ -99,7 +99,7 @@ int play(int ac, maps *navy_maps)
 			my_putstr("\nattack: ");
 			attack(navy_maps);
 			if ((salut = check_wn_status(navy_maps)) > 0)
-				return (salut);
+				return (salut - 1);
 		}
 	}
 	return (1);

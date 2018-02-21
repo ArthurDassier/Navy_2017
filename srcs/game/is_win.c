@@ -38,6 +38,7 @@ int is_win(char **maps)
 	int	i = 2;
 	int	j = 2;
 
+	usleep(50000);
 	while (maps[i] != NULL) {
 		if (maps[i][j] >= 48 && maps[i][j] <= 57) {
 			kill(keep_pid(4, 0), SIGUSR1);
