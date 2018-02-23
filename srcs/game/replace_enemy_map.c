@@ -9,6 +9,8 @@
 
 maps *replace_enemy_map(maps *navy_maps, int col, int line)
 {
+	printf("== col ==> %d\n", col);
+	printf("== lin ==> %d\n", line);
 	line += 1;
 	col *= 2;
 	col -= 2;
