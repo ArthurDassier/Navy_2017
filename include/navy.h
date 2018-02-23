@@ -69,5 +69,7 @@ int check_ls_status(maps *navy_maps);
 int check_wn_status(maps *navy_maps);
 int order_p1(line_col var, maps *navy_maps);
 int order_p2(line_col var, maps *navy_maps);
+int attack_err(char *atk);
+void send_attack_sig(maps *navy_maps, char *attack, int col, int line);
 
 #endif /* !NAVY_H */
