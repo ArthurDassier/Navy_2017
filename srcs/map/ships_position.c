@@ -45,6 +45,8 @@ char **ships_infos(char *av, char **ships)
 	int	fd = open(av, O_RDONLY);
 	int	i = 0;
 
+	if (fd == -1)
+		return (NULL);
 	while (i != 4) {
 		ships[i] = malloc(sizeof(char) * 8);
 		read(fd, ships[i], 8);
