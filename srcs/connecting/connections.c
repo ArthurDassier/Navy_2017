@@ -33,7 +33,7 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 	check_first_sig(1);
 }
 
-void wait_connection()
+void wait_connection(void)
 {
 	struct sigaction	*act = malloc(sizeof(struct sigaction));
 

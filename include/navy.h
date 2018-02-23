@@ -65,5 +65,9 @@ void loose(int sig, siginfo_t *siginfo, void *context);
 int is_loose(int code);
 void catch_first_sig(void);
 int check_first_sig(int code);
+int check_ls_status(maps *navy_maps);
+int check_wn_status(maps *navy_maps);
+int order_p1(line_col var, maps *navy_maps);
+int order_p2(line_col var, maps *navy_maps);
 
 #endif

@@ -52,7 +52,7 @@ void displayer(int sig, siginfo_t *siginfo, void *context)
 	}
 }
 
-void hit_or_miss()
+void hit_or_miss(void)
 {
 	struct sigaction	*hitormiss = malloc(sizeof(struct sigaction));
 
@@ -60,9 +60,8 @@ void hit_or_miss()
 	hitormiss->sa_sigaction = &displayer;
 	sigaction(SIGUSR1, hitormiss, NULL);
 	sigaction(SIGUSR2, hitormiss, NULL);
-	while (checker(0) == 0) {
+	while (checker(0) == 0)
 		usleep(50000);
-	}
 	checker(2);
 	free(hitormiss);
 }
