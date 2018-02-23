@@ -48,22 +48,13 @@ void attack(maps *navy_maps)
 	attack = get_next_line(0);
 	col = mti(attack[0]);
 	line = cti(attack[1]);
-	for (int sg1 = 0; sg1 != col; ++sg1)
-	{
-		usleep(50000);
-		kill(keep_pid(4, 0), SIGUSR1);
+	while (attack_err(attack) != 0) {
+		my_putstr("\nattack: ");
+		attack = get_next_line(0);
+		col = mti(attack[0]);
+		line = cti(attack[1]);
 	}
-	kill(keep_pid(4, 0), SIGUSR2);
-	for (int sg1 = 0; sg1 != line; ++sg1)
-	{
-		usleep(50000);
-		kill(keep_pid(4, 0), SIGUSR1);
-	}
-	kill(keep_pid(4, 0), SIGUSR2);
-	my_printf("%s: ", attack);
-	hit_or_miss();
-	replace_enemy_map(navy_maps, col, line);
-	h_m(3);
+	send_attack_sig(navy_maps, attack, col, line);
 }
 
 int game(maps *navy_maps, line_col *var)
