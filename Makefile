@@ -12,14 +12,16 @@ SRC	=	srcs/brain.c			\
 		srcs/game/replace_maps.c	\
 		srcs/game/replace_enemy_map.c	\
 		srcs/game/orders.c		\
+		srcs/game/turns.c		\
 		srcs/map/create_map.c		\
 		srcs/map/ships_position.c	\
 		srcs/map/init_maps.c		\
 		srcs/map/converter.c		\
 		srcs/print/print_maps.c		\
-		srcs/game/turns.c		\
 		srcs/sig/recup_sig.c		\
 		srcs/sig/count_sig.c		\
+		srcs/sig/send_attack_sig.c	\
+		srcs/error_gest/attack_err.c	\
 		srcs/get_next_line.c		\
 
 OBJ	=	$(SRC:.c = .o)
@@ -32,7 +34,7 @@ MY.H_DIR	=	./include
 
 CC	=	gcc
 
-C_FLAGS	=	-g3 -Wall -Wextra
+C_FLAGS	=	-Wall -Wextra
 
 LIB_FLAG	=	-L$(LIB_DIR) -lmy
 
