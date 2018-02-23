@@ -7,8 +7,6 @@
 
 #include "navy.h"
 
-static int global = 0;
-
 pid_t keep_pid(int usr, pid_t pid)
 {
 	static pid_t pid_usr1 = 0;
@@ -31,7 +29,8 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 	(void) context;
 	my_printf("\nennemy connected\n");
 	keep_pid(2, siginfo->si_pid);
-	global = 1;
+	kill(keep_pid(4, 0), SIGUSR1);
+	check_first_sig(1);
 }
 
 void wait_connection()
@@ -44,7 +43,7 @@ void wait_connection()
 	my_printf("waiting for enemy connection...\n");
 	act->sa_sigaction = &catch_sigint;
 	sigaction(SIGUSR1, act, NULL);
-	while (global == 0);
+	while (check_first_sig(0) == 0);
 	free(act);
 }
 
@@ -57,6 +56,7 @@ int server(int ac, char **av, maps *navy_maps)
 		kill(my_getnbr(av[1]), SIGUSR1);
 		keep_pid(2, my_getnbr(av[1]));
 		my_printf("my_pid:\t%d\n", getpid());
+		catch_first_sig();
 		my_printf("successfully connected\n");
 	}
 	return (play(ac, navy_maps));
