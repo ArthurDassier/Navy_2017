@@ -40,7 +40,7 @@ int case_b(va_list ap)
 int case_mod(va_list ap)
 {
 	my_putchar('%');
-	return(0);
+	return (0);
 }
 
 int case_smaj(va_list ap)

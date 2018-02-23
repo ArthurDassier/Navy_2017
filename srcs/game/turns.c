@@ -84,24 +84,11 @@ int play(int ac, maps *navy_maps)
 	int		salut = 0;
 
 	while (1) {
-		if (ac == 2) {
-			displays_for_p1(navy_maps);
-			attack(navy_maps);
-			if ((salut = check_wn_status(navy_maps)) > 0)
-				return (salut - 1);
-			game(navy_maps, &var);
-			if ((salut = check_ls_status(navy_maps)) > 0)
-				return (salut);
+		if (ac == 2 && (salut = order_p1(var, navy_maps)) != 2) {
+			return (salut);
 		}
-		if (ac == 3) {
-			displays_for_p2(navy_maps);
-			game(navy_maps, &var);
-			if ((salut = check_ls_status(navy_maps)) > 0)
-				return (salut);
-			my_putstr("\nattack: ");
-			attack(navy_maps);
-			if ((salut = check_wn_status(navy_maps)) > 0)
-				return (salut - 1);
+		if (ac == 3 && (salut = order_p2(var, navy_maps)) != 2) {
+			return (salut);
 		}
 	}
 	return (1);
