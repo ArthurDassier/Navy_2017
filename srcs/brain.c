@@ -30,6 +30,7 @@ int main(int ac, char **av)
 		helper();
 		return (0);
 	}
-	init_maps(navy_maps, ac, av);
+	if (init_maps(navy_maps, ac, av) == NULL)
+		return (84);
 	return (server(ac, av, navy_maps));
 }

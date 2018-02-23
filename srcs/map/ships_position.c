@@ -53,6 +53,8 @@ char **ships_infos(char *av, char **ships)
 		ships[i++][7] = '\0';
 	}
 	ships[i] = '\0';
+	if (ships_error_handling(ships) == -1)
+		return (NULL);
 	return (ships);
 }
 
