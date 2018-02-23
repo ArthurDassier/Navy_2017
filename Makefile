@@ -22,6 +22,7 @@ SRC	=	srcs/brain.c			\
 		srcs/sig/count_sig.c		\
 		srcs/sig/send_attack_sig.c	\
 		srcs/error_gest/attack_err.c	\
+		srcs/error_gest/ships_error_handling.c	\
 		srcs/get_next_line.c		\
 
 OBJ	=	$(SRC:.c = .o)
