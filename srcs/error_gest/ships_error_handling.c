@@ -7,23 +7,6 @@
 
 #include "navy.h"
 
-int is_good_size(char **ships)
-{
-	int	i = 0;
-
-	while (ships[i]) {
-		if (ships[i][2] != ships[i][5]) {
-			if (ships[i][5] - ships[i][2] != (ships[i][0] - 48 - 1))
-				return (-1);
-		} else {
-			if (ships[i][6] - ships[i][3] != ships[i][0] + 1)
-				return (-1);
-		}
-		++i;
-	}
-	return (0);
-}
-
 int ships_nb_handling(char **ships)
 {
 	int	i = 0;
@@ -54,8 +37,6 @@ int ships_error_handling(char **ships)
 	if (ships_nb_handling(ships) != 0)
 		return (-1);
 	else if (ships_size_handling(ships) != 0)
-		return (-1);
-	if (is_good_size(ships) != 0)
 		return (-1);
 	return (0);
 }

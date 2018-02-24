@@ -29,7 +29,6 @@ typedef struct line_col
 	int	touch;
 } line_col;
 
-int is_good_size(char **ships);
 int ships_nb_handling(char **ships);
 int ships_size_handling(char **ships);
 int ships_error_handling(char **ships);
