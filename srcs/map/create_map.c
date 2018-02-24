@@ -10,15 +10,15 @@
 int ships_map(char **my_map, char **ships)
 {
 	int	nb = 0;
-	int	horizo = 0;
-	int	vertica = 0;
+	int	horizon = 0;
+	int	vertical = 0;
 
 	malloc_map(my_map);
 	empty_map(my_map);
 	while (ships[nb] != NULL) {
-		horizo = ship_hori(ships[nb], (ships[nb][0] - 48));
-		vertica = ship_verti(ships[nb], (ships[nb][0] - 48));
-		if (remp_with_nb(my_map, horizo, vertica, ships[nb]) != 0)
+		horizon = ship_hori(ships[nb], (ships[nb][0] - 48));
+		vertical = ship_verti(ships[nb], (ships[nb][0] - 48));
+		if (remp_with_nb(my_map, horizon, vertical, ships[nb]) != 0)
 			return (-1);
 		++nb;
 	}

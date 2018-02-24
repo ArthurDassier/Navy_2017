@@ -74,5 +74,6 @@ int order_p2(line_col var, maps *navy_maps);
 int attack_err(char *atk);
 void send_attack_sig(maps *navy_maps, char *attack, int col, int line);
 int ships_error_handling(char **ships);
+int add_hori(char *map, char *ship, int hori, int j);
 
 #endif /* !NAVY_H */

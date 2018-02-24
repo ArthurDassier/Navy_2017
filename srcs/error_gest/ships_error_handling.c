@@ -7,6 +7,16 @@
 
 #include "navy.h"
 
+int add_hori(char *map, char *ship, int hori, int j)
+{
+	if (hori % 2 != 0) {
+		map[j + 1 + hori] = ship[0];
+	} else {
+		map[j + 2 + hori] = ship[0];
+	}
+	return (0);
+}
+
 int ships_nb_handling(char **ships)
 {
 	int	i = 0;
@@ -17,6 +27,9 @@ int ships_nb_handling(char **ships)
 			return (-1);
 		++i;
 	}
+	if (cti(ships[0][0]) + cti(ships[1][0]) + cti(ships[2][0]) +
+	cti(ships[3][0]) != 14)
+		return (-1);
 	return (0);
 }
 
@@ -36,7 +49,7 @@ int ships_error_handling(char **ships)
 {
 	if (ships_nb_handling(ships) != 0)
 		return (-1);
-	//else if (ships_size_handling(ships) != 0)
-		//return (-1);
+	else if (ships_size_handling(ships) != 0)
+		return (-1);
 	return (0);
 }

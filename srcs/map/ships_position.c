@@ -12,12 +12,20 @@ int remp_with_nb(char **map, int hori, int verti, char *ship)
 	int	i = 0;
 	int	j = 0;
 
+	if (ship[0] == '2') {
+		if (verti != 0)
+			--verti;
+		if (hori != 0)
+			--hori;
+	}
 	while (map[i][j] != ship[2])
 		++j;
 	i = (ship[3] - 48) + 1;
 	if (hori != 0)
 		remp_lines_for_hori(map, hori, ship, j);
 	while (verti != 0) {
+		if (map[i - 1 + verti][j] != '.')
+			return (84);
 		map[i - 1 + verti][j] = ship[0];
 		--verti;
 	}
@@ -32,14 +40,12 @@ int remp_lines_for_hori(char **map, int hori, char *ship, int j)
 	map[i][j] = ship[0];
 	map[i][j - 2 + (hori * 2)] = ship[0];
 	while (hori != 0) {
-		if (hori % 2 != 0)
-			map[i][j + 1 + hori] = ship[0];
-		else
-			map[i][j + 2 + hori] = ship[0];
+		add_hori(map[i], ship, hori, j);
 		--hori;
 	}
 	return (0);
 }
+
 char **ships_infos(char *av, char **ships)
 {
 	int	fd = open(av, O_RDONLY);
@@ -49,7 +55,9 @@ char **ships_infos(char *av, char **ships)
 		return (NULL);
 	while (i != 4) {
 		ships[i] = malloc(sizeof(char) * 8);
-		if (read(fd, ships[i], 8) == -1)
+		if ((ships[i] = get_next_line(fd)) == NULL)
+			return (NULL);
+		if (my_strlen(ships[i]) != 7)
 			return (NULL);
 		ships[i++][7] = '\0';
 	}
