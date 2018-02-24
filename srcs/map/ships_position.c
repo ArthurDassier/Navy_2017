@@ -15,14 +15,9 @@ int remp_with_nb(char **map, int hori, int verti, char *ship)
 	while (map[i][j] != ship[2])
 		++j;
 	i = (ship[3] - 48) + 1;
-	if (hori != 0) {
-		if (remp_lines_for_hori(map, hori, ship, j) != 0)
-			return (-1);
-	}
+	if (hori != 0)
+		remp_lines_for_hori(map, hori, ship, j);
 	while (verti != 0) {
-		if (map[i - 1 + verti][j] >= 49 &&
-				map[i - 1 + verti][j] <= 57)
-			return (-1);
 		map[i - 1 + verti][j] = ship[0];
 		--verti;
 	}
@@ -37,17 +32,10 @@ int remp_lines_for_hori(char **map, int hori, char *ship, int j)
 	map[i][j] = ship[0];
 	map[i][j - 2 + (hori * 2)] = ship[0];
 	while (hori != 0) {
-		if (hori % 2 != 0) {
-			if (map[i][j + 1 + hori] >= 49 &&
-					map[i][j + 1 + hori] <= 57)
-				return (-1);
+		if (hori % 2 != 0)
 			map[i][j + 1 + hori] = ship[0];
-		} else {
-			if (map[i][j + 1 + hori] >= 49 &&
-					map[i][j + 1 + hori] <= 57)
-				return (-1);
+		else
 			map[i][j + 2 + hori] = ship[0];
-		}
 		--hori;
 	}
 	return (0);
