@@ -55,7 +55,7 @@ void incr_usr2(int sig, siginfo_t *siginfo, void *context);
 int count_sig2(int code);
 void recup_sig(void);
 pid_t keep_pid(int usr, pid_t pid);
-void attack(maps *navy_maps);
+int attack(maps *navy_maps);
 int game(maps *navy_maps, line_col *var);
 int play(int ac, maps *navy_maps);
 void display_maps(maps *navy_maps);

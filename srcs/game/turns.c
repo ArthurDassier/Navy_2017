@@ -39,20 +39,24 @@ int check_ls_status(maps *navy_maps)
 	return (0);
 }
 
-void attack(maps *navy_maps)
+int attack(maps *navy_maps)
 {
 	char	*attack;
 	int	col = 0;
 	int	line = 0;
+	int	quit = 0;
 
 	attack = get_next_line(0);
-	while (attack_err(attack) != 0) {
+	while ((quit = attack_err(attack)) != 0) {
+		if (quit == -1)
+			return (-1);
 		my_putstr("\nattack: ");
 		attack = get_next_line(0);
 	}
 	col = mti(attack[0]);
 	line = cti(attack[1]);
 	send_attack_sig(navy_maps, attack, col, line);
+	return (0);
 }
 
 int game(maps *navy_maps, line_col *var)

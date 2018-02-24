@@ -9,10 +9,8 @@
 
 int attack_err(char *atk)
 {
-	if (atk == NULL) {
-		my_putstr("wrong position");
-		return (84);
-	}
+	if (atk == NULL)
+		return (-1);
 	if (my_strlen(atk) > 2) {
 		my_putstr("wrong position");
 		return (84);
