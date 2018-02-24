@@ -46,14 +46,12 @@ void attack(maps *navy_maps)
 	int	line = 0;
 
 	attack = get_next_line(0);
-	col = mti(attack[0]);
-	line = cti(attack[1]);
 	while (attack_err(attack) != 0) {
 		my_putstr("\nattack: ");
 		attack = get_next_line(0);
-		col = mti(attack[0]);
-		line = cti(attack[1]);
 	}
+	col = mti(attack[0]);
+	line = cti(attack[1]);
 	send_attack_sig(navy_maps, attack, col, line);
 }
 
