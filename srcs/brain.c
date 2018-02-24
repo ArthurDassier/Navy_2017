@@ -30,7 +30,9 @@ int main(int ac, char **av)
 		helper();
 		return (0);
 	}
-	if (init_maps(navy_maps, ac, av) == NULL)
+	if (init_maps(navy_maps, ac, av) != 0) {
+		my_puterror("bad map\n");
 		return (84);
+	}
 	return (server(ac, av, navy_maps));
 }
