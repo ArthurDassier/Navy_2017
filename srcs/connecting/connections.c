@@ -55,9 +55,9 @@ int server(int ac, char **av, maps *navy_maps)
 	if (ac == 3) {
 		kill(my_getnbr(av[1]), SIGUSR1);
 		keep_pid(2, my_getnbr(av[1]));
-		my_printf("my_pid:\t%d\n", getpid());
+		my_printf("my_pid:\t%d", getpid());
 		catch_first_sig();
-		my_printf("successfully connected\n");
+		my_printf("\nsuccessfully connected\n");
 	}
 	return (play(ac, navy_maps));
 }
