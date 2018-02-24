@@ -25,7 +25,7 @@ int my_getnbr(char *str)
 			nb = nb + str[i] - '0';
 			i++;
 		} else
-			return (nb * isneg);
+			return (0);
 	}
 	return (nb * isneg);
 }

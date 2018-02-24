@@ -56,6 +56,7 @@ void hit_or_miss(void)
 {
 	struct sigaction	*hitormiss = malloc(sizeof(struct sigaction));
 
+	sigemptyset(&hitormiss->sa_mask);
 	hitormiss->sa_flags = SA_SIGINFO;
 	hitormiss->sa_sigaction = &displayer;
 	sigaction(SIGUSR1, hitormiss, NULL);

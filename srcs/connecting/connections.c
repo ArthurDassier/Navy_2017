@@ -37,6 +37,7 @@ void wait_connection(void)
 {
 	struct sigaction	*act = malloc(sizeof(struct sigaction));
 
+	sigemptyset(&act->sa_mask);
 	act->sa_flags = SA_SIGINFO;
 	my_printf("my_pid:\t%d\n", getpid());
 	keep_pid(1, getpid());
@@ -53,6 +54,8 @@ int server(int ac, char **av, maps *navy_maps)
 		wait_connection();
 	}
 	if (ac == 3) {
+		if (my_getnbr(av[1]) == 0)
+			return (84);
 		if (kill(my_getnbr(av[1]), SIGUSR1) == -1) {
 			my_puterror("Invalid PID\n");
 			return (84);

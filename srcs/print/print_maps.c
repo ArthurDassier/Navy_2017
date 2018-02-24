@@ -9,7 +9,7 @@
 
 void display_maps(maps *navy_maps)
 {
-	my_putstr("\nmy_positions:\n");
+	my_putstr("\nmy positions:\n");
 	my_show_tab(navy_maps->player);
 	my_putstr("\nenemy's positions:\n");
 	my_show_tab(navy_maps->enemy);

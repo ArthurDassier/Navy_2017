@@ -11,6 +11,7 @@ int check_wn_status(maps *navy_maps)
 {
 	struct sigaction	*win = malloc(sizeof(struct sigaction));
 
+	sigemptyset(&win->sa_mask);
 	win->sa_flags = SA_SIGINFO;
 	win->sa_sigaction = &loose;
 	sigaction(SIGUSR1, win, NULL);
@@ -56,6 +57,7 @@ int attack(maps *navy_maps)
 	col = mti(attack[0]);
 	line = cti(attack[1]);
 	send_attack_sig(navy_maps, attack, col, line);
+	free(attack);
 	return (0);
 }
 
@@ -78,11 +80,14 @@ int play(int ac, maps *navy_maps)
 
 	while (1) {
 		if (ac == 2 && (salut = order_p1(var, navy_maps)) != 2) {
+			free(navy_maps);
 			return (salut);
 		}
 		if (ac == 3 && (salut = order_p2(var, navy_maps)) != 2) {
+			free(navy_maps);
 			return (salut);
 		}
 	}
+	free(navy_maps);
 	return (1);
 }

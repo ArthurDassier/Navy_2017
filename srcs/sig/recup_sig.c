@@ -11,6 +11,7 @@ void recup_sig(void)
 {
 	struct sigaction	*action_usr1 = malloc(sizeof(struct sigaction));
 
+	sigemptyset(&action_usr1->sa_mask);
 	action_usr1->sa_flags = SA_SIGINFO;
 	action_usr1->sa_sigaction = &incr_usr1;
 	sigaction(SIGUSR1, action_usr1, NULL);
