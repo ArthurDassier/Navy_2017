@@ -7,14 +7,16 @@
 
 #include "navy.h"
 
-maps *init_maps(maps *navy_maps, int ac, char **av)
+int init_maps(maps *navy_maps, int ac, char **av)
 {
 	char	**ships = malloc(sizeof(char *) * 5);
 
 	navy_maps->player = malloc(sizeof(char *) * 11);
 	navy_maps->enemy = malloc(sizeof(char *) * 11);
-	ships_infos(av[ac - 1], ships);
-	ships_map(navy_maps->player, ships);
+	if (ships_infos(av[ac - 1], ships) == NULL)
+		return (-1);
+	if (ships_map(navy_maps->player, ships) != 0)
+		return (-1);
 	empty_map(navy_maps->enemy);
-	return (navy_maps);
+	return (0);
 }
