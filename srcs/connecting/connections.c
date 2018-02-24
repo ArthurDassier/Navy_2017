@@ -53,7 +53,10 @@ int server(int ac, char **av, maps *navy_maps)
 		wait_connection();
 	}
 	if (ac == 3) {
-		kill(my_getnbr(av[1]), SIGUSR1);
+		if (kill(my_getnbr(av[1]), SIGUSR1) == -1) {
+			my_puterror("Invalid PID\n");
+			return (84);
+		}
 		keep_pid(2, my_getnbr(av[1]));
 		my_printf("my_pid:\t%d", getpid());
 		catch_first_sig();

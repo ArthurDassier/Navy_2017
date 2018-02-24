@@ -22,6 +22,8 @@ int main(int ac, char **av)
 {
 	maps	*navy_maps = malloc(sizeof(maps));
 
+	if (navy_maps == NULL)
+		return (84);
 	if (ac > 3 || ac < 2) {
 		my_puterror("bad argument\n");
 		return (84);
