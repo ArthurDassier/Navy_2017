@@ -54,7 +54,6 @@ char **ships_infos(char *av, char **ships)
 	if (fd == -1)
 		return (NULL);
 	while (i != 4) {
-		ships[i] = malloc(sizeof(char) * 8);
 		if ((ships[i] = get_next_line(fd)) == NULL)
 			return (NULL);
 		if (my_strlen(ships[i]) != 7)

@@ -33,23 +33,9 @@ int ships_nb_handling(char **ships)
 	return (0);
 }
 
-int ships_size_handling(char **ships)
-{
-	if (ships[0][0] == ships[1][0] || ships[0][0] == ships[2][0]
-	|| ships[0][0] == ships[3][0])
-		return (-1);
-	else if (ships[1][0] == ships[2][0] || ships[1][0] == ships[3][0])
-		return (-1);
-	if (ships[2][0] == ships[3][0])
-		return (-1);
-	return (0);
-}
-
 int ships_error_handling(char **ships)
 {
 	if (ships_nb_handling(ships) != 0)
-		return (-1);
-	else if (ships_size_handling(ships) != 0)
 		return (-1);
 	return (0);
 }
