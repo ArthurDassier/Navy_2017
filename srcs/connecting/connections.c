@@ -29,7 +29,6 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 	(void) context;
 	my_printf("\nennemy connected\n");
 	keep_pid(2, siginfo->si_pid);
-	kill(keep_pid(4, 0), SIGUSR1);
 	check_first_sig(1);
 }
 
@@ -62,7 +61,6 @@ int server(int ac, char **av, maps *navy_maps)
 		}
 		keep_pid(2, my_getnbr(av[1]));
 		my_printf("my_pid:\t%d", getpid());
-		catch_first_sig();
 		my_printf("\nsuccessfully connected\n");
 	}
 	return (play(ac, navy_maps));
