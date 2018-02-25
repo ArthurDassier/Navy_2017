@@ -27,7 +27,7 @@ void catch_sigint(int sig, siginfo_t *siginfo, void *context)
 {
 	(void) sig;
 	(void) context;
-	my_printf("\nennemy connected\n");
+	my_printf("\nenemy connected\n");
 	keep_pid(2, siginfo->si_pid);
 	check_first_sig(1);
 }
