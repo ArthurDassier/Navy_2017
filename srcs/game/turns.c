@@ -21,7 +21,7 @@ int check_wn_status(maps *navy_maps)
 	}
 	if (is_loose(3) == 1) {
 		display_maps(navy_maps);
-		my_putstr("\nI win\n");
+		my_putstr("\nI win\n\n");
 		free(win);
 		return (1);
 	}
@@ -34,7 +34,7 @@ int check_ls_status(maps *navy_maps)
 {
 	if (is_win(navy_maps->player) == 0) {
 		display_maps(navy_maps);
-		my_putstr("\nEnemy won\n");
+		my_putstr("\nEnemy won\n\n");
 		return (1);
 	}
 	return (0);
